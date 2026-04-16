@@ -2413,6 +2413,7 @@ public:
 				ColumnText("Z layer", "%d", pWnd->ZLayer);
 
 				DisplayTextureAnimation("Icon", static_cast<CTextureAnimation*>(pWnd->IconTextureAnim));
+				ColumnCXRect("Icon rect", pWnd->IconRect);
 
 				ColumnCheckBox("Minimized", &pWnd->Minimized);
 				ColumnCheckBox("Maximized", &pWnd->bMaximized);
@@ -2636,6 +2637,7 @@ public:
 				ColumnText("Z layer", "%d", pWnd->ZLayer);
 
 				DisplayTextureAnimation("Icon", pWnd->IconTextureAnim);
+				ColumnCXRect("Icon rect", pWnd->IconRect);
 
 				ColumnCheckBox("Minimized", &pWnd->Minimized);
 				ColumnCheckBox("Maximized", &pWnd->bMaximized);
