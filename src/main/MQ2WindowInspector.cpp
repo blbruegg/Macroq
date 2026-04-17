@@ -2354,7 +2354,7 @@ public:
 
 			ColumnCXRect("Client rect", pWnd->ClientRect);
 			ColumnCXStr("Text", &pWnd->WindowText);
-			ColumnCXStr("Tooltip", &pWnd->Unknown0x0E8);
+			ColumnCXStr("Tooltip", &pWnd->Tooltip);
 			ColumnWindow("Parent", pWnd->ParentWindow);
 
 			// Style
@@ -2413,10 +2413,10 @@ public:
 				ColumnText("Z layer", "%d", pWnd->ZLayer);
 
 				DisplayTextureAnimation("Icon", static_cast<CTextureAnimation*>(pWnd->IconTextureAnim));
-				ColumnCXRect("Icon rect", *reinterpret_cast<const CXRect*>(&pWnd->Data)); // IconRect at 0x088 in binary
+				ColumnCXRect("Icon rect", pWnd->IconRect);
 
 				ColumnCheckBox("Minimized", &pWnd->Minimized);
-				ColumnCheckBox("Maximized", &pWnd->Unknown0x19E);
+				ColumnCheckBox("Maximized", &pWnd->bMaximized);
 				ColumnCheckBox("Maximizable", &pWnd->bMaximizable);
 				ColumnCheckBox("Tiled", &pWnd->bTiled);
 				ColumnCheckBox("Action", &pWnd->bAction);
@@ -2446,7 +2446,7 @@ public:
 
 				// Alpha
 				ColumnCheckBox("Fade enabled", &pWnd->Fades);
-				ColumnText("Current fade alpha", "%d", pWnd->FadeToAlpha2);
+				ColumnText("Current fade alpha", "%d", pWnd->FadeAlpha);
 				ColumnText("Current max alpha", "%d", pWnd->Alpha);
 
 				// Mouse over / fading stuff
@@ -2459,7 +2459,7 @@ public:
 				// Transition effects
 				if (ColumnTreeNode("Transition Properties", ""))
 				{
-					ColumnText("Start alpha", "%d", pWnd->StartAlpha);
+					ColumnText("Start alpha", "%d", pWnd->SavedAlpha);
 					ColumnText("Target alpha", "%d", pWnd->TargetAlpha);
 					ColumnText("Transition start tick", "%d", pWnd->TransitionStartTick);
 					ColumnText("Transition duration", "%d", pWnd->TransitionDuration);
@@ -2637,7 +2637,7 @@ public:
 				ColumnText("Z layer", "%d", pWnd->ZLayer);
 
 				DisplayTextureAnimation("Icon", pWnd->IconTextureAnim);
-				ColumnCXRect("Icon rect", *reinterpret_cast<const CXRect*>(&pWnd->Data)); // IconRect at 0x088 in binary
+				ColumnCXRect("Icon rect", pWnd->IconRect);
 
 				ColumnCheckBox("Minimized", &pWnd->Minimized);
 				ColumnCheckBox("Maximized", &pWnd->bMaximized);
