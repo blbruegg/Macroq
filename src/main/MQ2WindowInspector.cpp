@@ -2354,7 +2354,7 @@ public:
 
 			ColumnCXRect("Client rect", pWnd->ClientRect);
 			ColumnCXStr("Text", &pWnd->WindowText);
-			ColumnCXStr("Tooltip", &pWnd->Tooltip);
+			ColumnCXStr("Tooltip", &pWnd->Unknown0x0E8);
 			ColumnWindow("Parent", pWnd->ParentWindow);
 
 			// Style
@@ -2413,10 +2413,10 @@ public:
 				ColumnText("Z layer", "%d", pWnd->ZLayer);
 
 				DisplayTextureAnimation("Icon", static_cast<CTextureAnimation*>(pWnd->IconTextureAnim));
-				ColumnCXRect("Icon rect", pWnd->IconRect);
+				ColumnCXRect("Icon rect", *reinterpret_cast<const CXRect*>(&pWnd->Data)); // IconRect at 0x088 in binary
 
 				ColumnCheckBox("Minimized", &pWnd->Minimized);
-				ColumnCheckBox("Maximized", &pWnd->bMaximized);
+				ColumnCheckBox("Maximized", &pWnd->Unknown0x19E);
 				ColumnCheckBox("Maximizable", &pWnd->bMaximizable);
 				ColumnCheckBox("Tiled", &pWnd->bTiled);
 				ColumnCheckBox("Action", &pWnd->bAction);
@@ -2446,7 +2446,7 @@ public:
 
 				// Alpha
 				ColumnCheckBox("Fade enabled", &pWnd->Fades);
-				ColumnText("Current fade alpha", "%d", pWnd->FadeAlpha);
+				ColumnText("Current fade alpha", "%d", pWnd->FadeToAlpha2);
 				ColumnText("Current max alpha", "%d", pWnd->Alpha);
 
 				// Mouse over / fading stuff
@@ -2473,12 +2473,12 @@ public:
 				if (ColumnTreeNode("Blink Properties", ""))
 				{
 					ColumnText("Blink fade frequency", "%d", pWnd->BlinkFadeFreq);
-					ColumnText("Last blink fade refresh time", "%d", pWnd->LastBlinkFadeRefreshTime);
+					ColumnText("Last blink fade refresh time", "%d", pWnd->SavedAlpha);
 					ColumnText("Blink fade duration", "%d", pWnd->BlinkFadeDuration);
 					ColumnText("Blink fade start time", "%d", pWnd->BlinkFadeStartTime);
 					ColumnText("Blink state", "%d", pWnd->BlinkState);
 					ColumnText("Blink start timer", "%d", pWnd->BlinkStartTimer);
-					ColumnText("Blink duration", "%d", pWnd->BlinkDuration);
+					ColumnText("Blink duration", "%d", pWnd->Unknown0x200);
 
 					ImGui::TreePop();
 				}
@@ -2637,7 +2637,7 @@ public:
 				ColumnText("Z layer", "%d", pWnd->ZLayer);
 
 				DisplayTextureAnimation("Icon", pWnd->IconTextureAnim);
-				ColumnCXRect("Icon rect", pWnd->IconRect);
+				ColumnCXRect("Icon rect", *reinterpret_cast<const CXRect*>(&pWnd->Data)); // IconRect at 0x088 in binary
 
 				ColumnCheckBox("Minimized", &pWnd->Minimized);
 				ColumnCheckBox("Maximized", &pWnd->bMaximized);
