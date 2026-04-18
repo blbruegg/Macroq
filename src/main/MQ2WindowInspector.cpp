@@ -2419,13 +2419,13 @@ public:
 				ColumnCheckBox("Maximized", &pWnd->bMaximized);
 				ColumnCheckBox("Maximizable", &pWnd->bMaximizable);
 				ColumnCheckBox("Tiled", &pWnd->bTiled);
-				//ColumnCheckBox("Action", &pWnd->bAction); // bAction identity unverified in April 2026
+				ColumnCheckBox("Action", &pWnd->bAction);
 				ColumnCheckBox("Bring to top when clicked", &pWnd->bBringToTopWhenClicked);
 				ColumnCheckBox("Mouse over", &pWnd->MouseOver);
 
 				// Background
 				ColumnText("Background type", XWndBackgroundTypeToString(static_cast<XWndBackgroundType>(pWnd->BGType)));
-				ColumnColor("Disabled background", &pWnd->DisabledBackground);
+				ColumnText("Background draw type", XWndBackgroundDrawTypeToString(static_cast<XWndBackgroundDrawType>(pWnd->BackgroundDrawType)));
 				ColumnColor("Normal color", &pWnd->CRNormal);
 				ColumnColor("Background color", &pWnd->BGColor);
 				ColumnColor<CXWnd>("Disabled background color", pWnd, &CXWnd::GetDisabledBackground, &CXWnd::SetDisabledBackground);
@@ -2451,7 +2451,6 @@ public:
 
 				// Mouse over / fading stuff
 				ColumnCheckBox("Faded", &pWnd->Faded);
-				ColumnText("Last blink fade refresh time", "%d", pWnd->LastBlinkFadeRefreshTime);
 				ColumnText("Last time mouse over", "%d", pWnd->LastTimeMouseOver);
 				ColumnText("Fade delay", "%d", pWnd->FadeDelay);
 				ColumnText("Fade duration", "%d", pWnd->FadeDuration);
@@ -2644,13 +2643,13 @@ public:
 				ColumnCheckBox("Maximized", &pWnd->bMaximized);
 				ColumnCheckBox("Maximizable", &pWnd->bMaximizable);
 				ColumnCheckBox("Tiled", &pWnd->bTiled);
-				//ColumnCheckBox("Action", &pWnd->bAction); // bAction identity unverified in April 2026
+				ColumnCheckBox("Action", &pWnd->bAction);
 				ColumnCheckBox("Bring to top when clicked", &pWnd->bBringToTopWhenClicked);
 				ColumnCheckBox("Mouse over", &pWnd->MouseOver);
 
 				// Background
 				ColumnText("Background type", XWndBackgroundTypeToString(static_cast<XWndBackgroundType>(pWnd->BGType)));
-				ColumnColor("Disabled background", &pWnd->DisabledBackground);
+				ColumnText("Background draw type", XWndBackgroundDrawTypeToString(static_cast<XWndBackgroundDrawType>(pWnd->BackgroundDrawType)));
 				ColumnColor("Normal color", &pWnd->CRNormal);
 				ColumnColor("Background color", &pWnd->BGColor);
 				ColumnColor<eqlib::eqmain::CXWnd>("Disabled background color", pWnd,
@@ -2677,7 +2676,6 @@ public:
 
 				// Mouse over / fading stuff
 				ColumnCheckBox("Faded", &pWnd->Faded);
-				ColumnText("Last blink fade refresh time", "%d", pWnd->LastBlinkFadeRefreshTime);
 				ColumnText("Last time mouse over", "%d", pWnd->LastTimeMouseOver);
 				ColumnText("Fade delay", "%d", pWnd->FadeDelay);
 				ColumnText("Fade duration", "%d", pWnd->FadeDuration);
