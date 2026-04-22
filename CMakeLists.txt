@@ -168,7 +168,25 @@ endif()
 # vcpkg Integration (MUST be set before project() call)
 # ============================================================================
 if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
-    set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+	set(_VCPKG_CANDIDATES
+		"$ENV{VCPKG_ROOT}"
+		"C:/vcpkg"
+		"D:/vcpkg"
+		"$ENV{USERPROFILE}/vcpkg"
+	)
+
+	foreach(path IN LISTS _VCPKG_CANDIDATES)
+		if(path AND EXISTS "${path}/scripts/buildsystems/vcpkg.cmake")
+			set(CMAKE_TOOLCHAIN_FILE "${path}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+			set(VCPKG_ROOT "${path}" CACHE PATH "")
+			message(STATUS "Using vcpkg from:${path}")
+			break()
+		endif()
+	endforeach()
+    
+	if(NOT DEFINED CMAKE_TOOLCHAIN_FILE OR NOT EXISTS "${CMAKE_TOOLCHAIN_FILE}")
+		message(FATAL_ERROR "vcpkg not found. Set VCPKG_ROOT or install vcpkg.")
+	endif()
 endif()
 
 # Extract port names from subdirectories
