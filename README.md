@@ -2,6 +2,9 @@
 
 [![Emu RoF2 Build](https://github.com/macroquest/macroquest/actions/workflows/ci_emu_rof2.yaml/badge.svg)](https://github.com/macroquest/macroquest/actions/workflows/ci_emu_rof2.yaml)
 
+
+---
+This is just a copy with small updates to the way it gets built for my own system.  It may work for you if it's up to date at the time.  Check the head repository for up to date info. 
 ---
 
 MacroQuest is an open source scripting and plugin platform for EverQuest.  Documentation can be found at [docs.macroquest.org](https://docs.macroquest.org).
@@ -20,7 +23,7 @@ The recommended way to build MacroQuest is from a source code checkout using Git
 Create the checkout. This will create the subfolder **macroquest** that contains a copy of the project.
 
 ```
-git clone https://github.com/macroquest/macroquest.git
+git clone https://github.com/blbruegg/Macroq.git
 ```
 
 Make sure that submodules are initialized. Move (cd) to the newly created **macroquest** folder before executing this command.  If you have run this step already, you can skip it
