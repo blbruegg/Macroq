@@ -14,6 +14,10 @@ MacroQuest is an open source scripting and plugin platform for EverQuest.  Docum
 ### Prererequisites
 
 * [Visual Studio Community](https://visualstudio.microsoft.com/downloads/)
+	* There are a few extra packages you will want to select when building for yourself.
+ 		* vcpkg -- if it's your first time opening - compiling the solution your VS will complain about now having it to reference and will not build without extra configuration - this is already packaged with the repository but VS will not find it that way initially.
+   		* C++ ATL for MVSC v143 toolset
+     		* Until the codebase is refactored for the newest version you have to install this manually. 
 * [Git for Windows](https://git-scm.com/)
 
 The recommended way to build MacroQuest is from a source code checkout using Git. There are many how to guides for installing and setting up git. [Here is one of them](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html)
